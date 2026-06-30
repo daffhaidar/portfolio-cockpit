@@ -28,8 +28,11 @@ export default function Footer() {
             DAFFA HAIDAR
           </div>
           <p className="mt-2 max-w-md text-sm text-ink-faint">
-            Built as a farewell flight. Frontend, backend, and every gauge on
-            this deck were hand-assembled.
+            Six years on the apron taught me to build, break, and keep flying.
+            This deck is where the honest hours land.
+          </p>
+          <p className="mt-3 font-mono text-[11px] tracking-[0.14em] text-ink-faint">
+            © Daffa Haidar 2026
           </p>
         </div>
 
