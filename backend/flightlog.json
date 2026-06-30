@@ -1,0 +1,46 @@
+{
+  "phases": [
+    {
+      "code": "PRE-FLIGHT",
+      "year": "2020",
+      "title": "Engines Spooling",
+      "body": "Pulled into Web3 through an Optimism airdrop by two friends. They left for web2; the apron stayed mine. Started grinding wallets, reading docs nobody read.",
+      "tags": ["origin", "airdrop", "self-taught"]
+    },
+    {
+      "code": "TAXI",
+      "year": "2020-2021",
+      "title": "Community Lead, Node Operator",
+      "body": "Vitall mod to Lead. Taught myself to run nodes from scratch. Learned that infrastructure is just discipline repeated daily.",
+      "tags": ["community", "infra", "nodes"]
+    },
+    {
+      "code": "TAKEOFF",
+      "year": "2022",
+      "title": "Validator on the Line",
+      "body": "Stood up an Aptos validator. Real stake, real slashing risk, real uptime pressure. The kind of responsibility that teaches you fast.",
+      "tags": ["validator", "staking", "uptime"]
+    },
+    {
+      "code": "TURBULENCE",
+      "year": "2023",
+      "title": "Drained",
+      "body": "Lost ~$4K to an approval-phishing signature. Not just money. A lesson in trust, signatures, and why I read every approval now.",
+      "tags": ["security", "lesson", "phishing"]
+    },
+    {
+      "code": "CRUISE",
+      "year": "2024",
+      "title": "Helicopter MRO, Cibubur",
+      "body": "Three months on the hangar floor at a heli maintenance shop. Hands on Bell, Sikorsky, Airbus. NDT, autorotation theory, ATC comms. The work that made me feel human.",
+      "tags": ["aviation", "MRO", "Bell-429"]
+    },
+    {
+      "code": "APPROACH",
+      "year": "2025-2026",
+      "title": "Security & AI Agents",
+      "body": "Bug bounty across HackerOne, Bugcrowd, Cantina. Building AI agents that automate Web3 work. Translating between Indonesia's reality and the global frontier.",
+      "tags": ["bug-bounty", "AI-agents", "DevRel"]
+    }
+  ]
+}
