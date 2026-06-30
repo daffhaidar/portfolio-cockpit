@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* ===== Flight-deck theme — night instrument panel (amber + cyan HUD) ===== */
+@theme {
+  /* cool blue-black deck (richer than neutral black) */
+  --color-deck-950: #05070d;
+  --color-deck-900: #080b13;
+  --color-deck-850: #0c111c;
+  --color-deck-800: #121826;
+  --color-deck-700: #1b2436;
+  --color-deck-600: #29354c;
+
+  /* primary instrument amber */
+  --color-amber: #e8ad5c;
+  --color-amber-bright: #ffc97a;
+  --color-amber-dim: #8a6535;
+
+  /* cyan HUD glow — secondary, semantic (live / active readouts) */
+  --color-hud: #54d6e8;
+  --color-hud-dim: #2c7e8c;
+
+  --color-signal: #5fe0a8;
+  --color-warn: #ef8a5c;
+
+  --color-ink: #eaeef5;
+  --color-ink-dim: #9caabf;
+  --color-ink-faint: #5d6a80;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* anchor jumps land BELOW the fixed 64px nav, not under it */
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%; /* stop old mobile Safari autoscaling text */
+}
+
+body {
+  margin: 0;
+  background: var(--color-deck-900);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  /* old-phone safety: never allow sideways scroll */
+  overflow-x: hidden;
+  max-width: 100vw;
+  overscroll-behavior-y: none;
+}
+
+/* subtle cool vignette + amber bloom from top — adds depth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(232, 173, 92, 0.07), transparent 55%),
+    radial-gradient(90% 60% at 80% 110%, rgba(84, 214, 232, 0.05), transparent 60%);
+}
+
+/* Instrument-panel grid backdrop */
+.deck-grid {
+  background-image:
+    linear-gradient(rgba(232, 173, 92, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 173, 92, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Fixed film grain — pointer-events-none, never on scroll containers */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* HUD scanline sweep */
+@keyframes sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(84, 214, 232, 0.07),
+    transparent
+  );
+  animation: sweep 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.25; }
+}
+.blink { animation: blink 1.4s step-end infinite; }
+
+/* soft pulse glow for live indicators */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(95, 224, 168, 0.5); }
+  50% { box-shadow: 0 0 0 4px rgba(95, 224, 168, 0); }
+}
+.pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scanline, .blink, .pulse-glow { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-deck-950);
+}
+
+/* thin amber scrollbar */
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: var(--color-deck-850); }
+::-webkit-scrollbar-thumb { background: var(--color-amber-dim); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-amber); }
