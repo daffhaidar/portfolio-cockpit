@@ -8,6 +8,8 @@
 //   POST /api/guestbook         -> add an entry { callsign, message }
 import express from "express";
 import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
@@ -23,23 +25,34 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 4178;
 
+// Behind nginx (and Vercel edge) — trust exactly one proxy hop for correct req.ip.
+app.set("trust proxy", 1);
+
+// Security headers. API serves JSON only, so we can lock CSP down hard.
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: { defaultSrc: ["'none'"], frameAncestors: ["'none'"] },
+    },
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  })
+);
+
 app.use(cors());
 app.use(express.json({ limit: "16kb" }));
+
+// Write limiter: 5 transmissions / 10 min per IP (real, header-based).
+const writeLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many transmissions. Hold." },
+});
 
 const flightlog = JSON.parse(
   readFileSync(join(__dirname, "flightlog.json"), "utf-8")
 );
-
-// --- naive in-memory rate limiter for writes (per IP, 5 / 10 min) ---
-const writeHits = new Map();
-function rateLimited(ip) {
-  const now = Date.now();
-  const win = 10 * 60 * 1000;
-  const arr = (writeHits.get(ip) || []).filter((t) => now - t < win);
-  arr.push(now);
-  writeHits.set(ip, arr);
-  return arr.length > 5;
-}
 
 app.get("/api/health", (_req, res) =>
   res.json({ status: "AIRBORNE", ts: new Date().toISOString() })
@@ -60,11 +73,7 @@ app.get("/api/guestbook", (req, res) => {
   res.json({ entries: recentEntries(limit), total: countEntries() });
 });
 
-app.post("/api/guestbook", (req, res) => {
-  const ip = req.headers["x-forwarded-for"]?.split(",")[0] || req.ip;
-  if (rateLimited(ip))
-    return res.status(429).json({ error: "Too many transmissions. Hold." });
-
+app.post("/api/guestbook", writeLimiter, (req, res) => {
   let { callsign, message } = req.body || {};
   callsign = String(callsign || "").trim().slice(0, 32);
   message = String(message || "").trim().slice(0, 280);
