@@ -2,45 +2,59 @@
   "phases": [
     {
       "code": "PRE-FLIGHT",
-      "year": "2020",
-      "title": "Engines Spooling",
-      "body": "Pulled into Web3 through an Optimism airdrop by two friends. They left for web2; the apron stayed mine. Started grinding wallets, reading docs nobody read.",
-      "tags": ["origin", "airdrop", "self-taught"]
+      "year": "Jan-Apr 2017",
+      "title": "Hangar Floor, Cibubur",
+      "body": "PKL at a helicopter MRO shop. Started in January, wrapped the hands-on work by early March, fully signed off in April. Bell, Sikorsky, Airbus on the floor. This was before any crypto, and it is still where I felt most at home.",
+      "tags": ["aviation", "MRO", "first-love"]
+    },
+    {
+      "code": "ENGINE START",
+      "year": "Nov 2020",
+      "title": "Into Crypto, Straight to Lead",
+      "body": "Joined crypto at the end of November after watching a friend hit an Optimism airdrop. Almost immediately took a mod-lead role at Vitall on Solana. No slow ramp, thrown straight into the deep end.",
+      "tags": ["origin", "Optimism", "Vitall", "community-lead"]
     },
     {
       "code": "TAXI",
-      "year": "2020-2021",
-      "title": "Community Lead, Node Operator",
-      "body": "Vitall mod to Lead. Taught myself to run nodes from scratch. Learned that infrastructure is just discipline repeated daily.",
-      "tags": ["community", "infra", "nodes"]
+      "year": "2021",
+      "title": "Learning the Controls",
+      "body": "Started with Telegram airdrops, then actually learned the craft: testnets, revoking approvals, governance votes, wallet hygiene. Mid-year I took my first swing at a validator. Pure pain, zero results, just study. By late 2021 it clicked, and the projects I touched started to pay off.",
+      "tags": ["testnet", "validator-attempt", "self-taught"]
     },
     {
       "code": "TAKEOFF",
       "year": "2022",
-      "title": "Validator on the Line",
-      "body": "Stood up an Aptos validator. Real stake, real slashing risk, real uptime pressure. The kind of responsibility that teaches you fast.",
-      "tags": ["validator", "staking", "uptime"]
+      "title": "Aptos Validator, ~2,200 APTOS",
+      "body": "Tried validators again in a dead bear market. Quiet and discouraging, but I kept grinding and stood up an Aptos validator. In October I became eligible and earned about 2,200 APTOS. I rolled that into running more nodes and farming Arbitrum retroactive with the capital.",
+      "tags": ["Aptos", "validator", "Arbitrum", "nodes"]
+    },
+    {
+      "code": "CLIMB",
+      "year": "2023",
+      "title": "The Big Wins",
+      "body": "March brought the Aptos airdrop, worth around 90M IDR. In April and May I locked $45 into a SUI pre-order on Bybit and qualified for 1,300 SUI. My best stretch. It also opened with a small 500K IDR drain on my Arbitrum wallet, and by year end the drainers were back and persistent.",
+      "tags": ["Aptos-airdrop", "SUI", "first-drain"]
     },
     {
       "code": "TURBULENCE",
-      "year": "2023",
-      "title": "Drained",
-      "body": "Lost ~$4K to an approval-phishing signature. Not just money. A lesson in trust, signatures, and why I read every approval now.",
-      "tags": ["security", "lesson", "phishing"]
+      "year": "2024",
+      "title": "The $4K Hit",
+      "body": "First day of Ramadan in April: about 2,200 WORMHOLE, worth roughly $4K, gone to an approval phish. Then I missed LayerZero in May and zkSync in June. October returned a small $86 Optimism reward. A year that mostly took.",
+      "tags": ["drain", "Ramadan", "lesson", "security"]
     },
     {
-      "code": "CRUISE",
-      "year": "2024",
-      "title": "Helicopter MRO, Cibubur",
-      "body": "Three months on the hangar floor at a heli maintenance shop. Hands on Bell, Sikorsky, Airbus. NDT, autorotation theory, ATC comms. The work that made me feel human.",
-      "tags": ["aviation", "MRO", "Bell-429"]
+      "code": "HOLDING PATTERN",
+      "year": "2025",
+      "title": "Dry Season, Then Freelance",
+      "body": "Early 2025 was bone dry. I poured everything into my portfolio and it still felt like a total wipeout. Mid-year I signed up on Upwork and Fiverr. In November I landed my first Fiverr client, Daniel: $150 to set up 8 nodes that turned out to be full nodes, not reward validators. He wanted free fixes. I quoted $9,900 to do it properly with docs, and he walked. ($35 of mine is still stuck on Pioneer, below the $50 withdrawal floor.)",
+      "tags": ["portfolio", "Fiverr", "freelance", "hard-lessons"]
     },
     {
       "code": "APPROACH",
-      "year": "2025-2026",
-      "title": "Security & AI Agents",
-      "body": "Bug bounty across HackerOne, Bugcrowd, Cantina. Building AI agents that automate Web3 work. Translating between Indonesia's reality and the global frontier.",
-      "tags": ["bug-bounty", "AI-agents", "DevRel"]
+      "year": "2026",
+      "title": "AI Agents & Bug Bounty",
+      "body": "The hardest stretch yet, and still ongoing. But at the end of May I found AI agents and bug bounty, only about a month ago, and it has been the fastest I have ever learned anything. New heading, engines still running.",
+      "tags": ["AI-agents", "bug-bounty", "DevRel", "new-heading"]
     }
   ]
 }
